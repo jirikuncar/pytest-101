@@ -1,3 +1,6 @@
+# Do not commit Python files in presentation branch
+*.py
+
 PRESENTATION.md
 
 *.db

@@ -10,4 +10,4 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'Welcome! Thank you for taking your time to report an issue.'
-        pr-message: 'Whenever you are fixing a typo, 🐛 or adding new feature, thank you for your contribution!'
+        pr-message: 'Welcome! Have fun if you are going to follow this tutorial live. Thank you for your contribution if you are fixing a typo, 🐛 or adding new feature.'

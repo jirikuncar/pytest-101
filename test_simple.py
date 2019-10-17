@@ -16,4 +16,4 @@ def test_approx():
 
 
 def test_set():
-    assert 6 in set(range(10, step=2))
+    assert 6 in set(range(0, 10, 2))

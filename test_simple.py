@@ -1,17 +1,19 @@
 """test_simple.py"""
 
+import pytest
+
 
 def test_equality_1():
     assert 10 == 10
 
 
 def test_equality_2():
-    assert 10 == "10"
+    assert 10 == int("10")
 
 
 def test_approx():
-    assert .6 / .4 == 1.5
+    assert .6 / .4 == pytest.approx(1.5)
 
 
 def test_set():
-    assert 6 in {0, 2, 4, 5, 8}
+    assert 6 in set(range(10, step=2))

@@ -32,3 +32,31 @@ def data(cur, data_source):
     cur.executemany("INSERT INTO fx VALUES (?, ?)", data_source.items())
     yield data_source
     cur.connection.rollback()
+
+
+class Request:
+    """Implement an interface of HTTP request."""
+
+    def __init__(self, path):
+        self.path = path
+        self.data = b''  # internal state
+
+    def makefile(self, *args, **kwargs):
+        from io import BytesIO
+        return BytesIO(f"GET {self.path}".encode("utf-8"))
+
+    def sendall(self, data):
+        self.data += data
+
+
+@pytest.fixture
+def get(conn):
+    """Create HTTP GET request."""
+    import app
+
+    handler = app.handler(conn)
+
+    def factory(path):
+        return handler(Request(path), (None, 8000), None)
+
+    return factory
